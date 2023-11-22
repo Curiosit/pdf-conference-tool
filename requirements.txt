@@ -3,4 +3,4 @@ Flask
 Flask-Session
 requests
 pdfrw
-pandas
+xlrd
