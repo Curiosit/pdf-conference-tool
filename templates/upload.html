@@ -6,12 +6,16 @@
 
 {% block main %}
 
-    <label class="m-2">Select an .xls file</label>
+    <label class="m-2">Select an .xls file with data table, or use an example <a href="./static/example_data.xls">file</a></label>
     <form action="/uploaded" method="post" enctype = "multipart/form-data">
         <div class="mb-3">
             <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="file" name="file" placeholder="Select one excel file..." type="file">
         </div>
-        <button class="btn btn-primary" type="submit" name="action" value="upload">Upload</button>
-        <button class="btn btn-primary" type="submit" name="action" value="check">Check</button>
+    <label class="m-2">Select a .pdf template file or use the default <a href="./static/temp.pdf">one</a></label>
+        <div class="mb-3">
+            <input autocomplete="off" autofocus class="form-control mx-auto w-auto" id="pdf_file" name="pdf_file" placeholder="Select one pdf template file..." type="file">
+        </div>
+        <button class="btn btn-primary" type="submit" name="action" value="upload">Generate!</button>
+        <button class="btn btn-secondary" type="submit" name="action" value="check">Check Excel file table</button>
     </form>
 {% endblock %}

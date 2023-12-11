@@ -16,7 +16,7 @@ df = ""
 from pathlib import Path
 
 THIS_FOLDER = Path(__file__).parent.resolve()
-pdf_template = THIS_FOLDER / "static/temp.pdf"
+pdf_template_path = THIS_FOLDER / "static/temp.pdf"
 excel_template = THIS_FOLDER / "static/example_data.xls"
 filled_pdf = THIS_FOLDER / "static/filled_pdf.pdf"
 
@@ -47,14 +47,26 @@ def upload():
     if request.method == "POST":
         print(request.form["action"])
         if request.form["action"] == "upload":
+            f = ''
+
+            df=''
+            if request.files["file"]:
+                f = request.files["file"]
+                data = f.read()
+                filename = f.filename
+                file_object = io.BytesIO(data)
+                values = []
+
+                df = pd.read_excel(file_object, header=None)
+            else:
+                df = pd.read_excel(excel_template, header=None)
+                filename = 'default'
             # FileStorage object wrapper
-            f = request.files["file"]
-            data = f.read()
-            filename = f.filename
-            file_object = io.BytesIO(data)
-            values = []
-            vid = 0
-            df = pd.read_excel(file_object, header=None)
+
+
+
+
+
             df.columns = df.columns.astype(str)
             df = df.rename(
                 columns={
@@ -78,6 +90,14 @@ def upload():
             values = dict
             i = 0
             result = []
+
+
+
+            pdf_template = ''
+            if request.files["pdf_file"]:
+                pdf_template = request.files["pdf_file"]
+            else:
+                pdf_template = pdf_template_path
             pdfs = pdfrw.PdfWriter()
 
             ppage = ""
