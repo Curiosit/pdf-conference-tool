@@ -12,6 +12,12 @@ Generating numerous PDF certificates for a conference or workshop can be a chall
 ### Template Files
 Explore the 'static' folder, which contains essential template files. The Excel file, named 'example_data.xls,' and the PDF template, 'temp.pdf,' are customizable. Feel free to modify these files to achieve different results according to your specific needs.
 
+### Preparing a template file
+The template PDF file can be prepared using any PDF software, for example Sejda.com. The user needs to create editable form fields. The example template file has 3 form fields: **text_function**, **text_name** and **text_desc**
+
+![image](https://github.com/Curiosit/pdf-conference-tool/assets/17218693/f3eb4c73-5e73-43c2-83ac-2052684b1df4)
+
+
 ### File Structure
 The core logic of the application resides in 'app.py.' Additionally, you'll find various layout files in the 'static' folder, allowing for flexibility in the presentation of your certificates.
 
